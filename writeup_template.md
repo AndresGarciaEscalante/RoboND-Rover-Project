@@ -34,9 +34,15 @@ You're reading it!
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
 Here is an example of how to include an image in your writeup.
 
-![alt text][image1]
+
+
 
 #### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result.
+
+
+
+
+
 
 ### Autonomous Navigation and Mapping
 
@@ -44,18 +50,16 @@ Here is an example of how to include an image in your writeup.
 
 For this project the data capture of the `perception_step()` goes to the instance of the class `RoverState()`. All functions we develop during the quizzes were really helpful in order to develop this function. The `perception.py` had all the functions, in the 'perception_step' we applied the functions to determine the rock samples, obstacles, and the navigable terrain.
 
-* First of all we needed to determine the rocks samples, for this we use certain values for the threshold in order to identify which objects are rocks, the simulation make it easy to do this because the rocks color are yellow. The values of the threshold are (110,110,50)
+* First of all we needed to find the rocks samples, for this we use certain values for the threshold in order to identify which objects are rocks, the simulation make it easy to do this because the rocks color is yellow. The `find_rocks` use the values of the threshold and the current image (`Rover.img`) and if conditions are true, it will show the rock sample.
 
-* We did almost the same steps as in the Jupyter notebook, we defined our source and description points, then we applied the `perspect_transform` to the current image and we created a mask, after that we mapped the rover coords with the functions `rover_coords` and past them into the `pix_to_world`.
-
-* Also 
+* We did almost the same steps as in the Jupyter notebook, we defined our source and description points, then we applied the `perspect_transform` to the current image and we created a mask, after that we mapped the rover coords with the functions `rover_coords` and pass them into the `pix_to_world`.
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
-**Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
+* Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15.
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+* Rover performance is good enough, it mapped 75-95% of the world with 60-70% fidelity. However, the problem is that the `decision.py` is not completetly develop, the decision making of the rover is too simple and also the velocity of the rover is quite slow.
 
+![Last Frame](RoverSimu.png)
 
-
-![alt text][image3]
+* In order to make the rover more efficient, many improvements are needed: First, the rover can throttle whenever the path has a lot of navigable terrain. Another important change might be that the rover can remembered the paths that he already visited and to make the decision with that information.

@@ -42,13 +42,13 @@ Here is an example of how to include an image in your writeup.
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
 
-For this project the data capture of the 'perception_step()' goes to the instance of the class 'RoverState()'. All functions we develop during the quizzes were really helpful in order to develop this function.
+For this project the data capture of the `perception_step()` goes to the instance of the class `RoverState()`. All functions we develop during the quizzes were really helpful in order to develop this function. The `perception.py` had all the functions, in the 'perception_step' we applied the functions to determine the rock samples, obstacles, and the navigable terrain.
 
-* The 'perception.py' had all the functions, in the 'perception_step' we use applied the functions to determine the rock samples, obstacles, and the navigable terrain.
+* First of all we needed to determine the rocks samples, for this we use certain values for the threshold in order to identify which objects are rocks, the simulation make it easy to do this because the rocks color are yellow. The values of the threshold are (110,110,50)
 
-* First of all we needed to determine the rocks samples, for this we use certain values for the threshold in order to identifyingtify which objects are rocks, the simulation make it easy to do this because the rocks color is yellow. The values are (110,110,50)
+* We did almost the same steps as in the Jupyter notebook, we defined our source and description points, then we applied the `perspect_transform` to the current image and we created a mask, after that we mapped the rover coords with the functions `rover_coords` and past them into the `pix_to_world`.
 
-* We did almost the same steps as in the Jupyter notebook, we defined our source and description points,
+* Also 
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 

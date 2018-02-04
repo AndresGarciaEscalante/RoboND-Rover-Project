@@ -114,7 +114,7 @@ def perception_step(Rover):
                               [image.shape[1]/2 + dst_size, image.shape[0] - 2*dst_size - bottom_offset],
                               [image.shape[1]/2 - dst_size, image.shape[0] - 2*dst_size - bottom_offset],
                               ])
-    warped = mask = perspect_transform(Rover.img, source, destination)
+    warped, mask = perspect_transform(Rover.img, source, destination)
     # 3) Apply color threshold to identify navigable terrain/obstacles/rock samples
     threshed = color_thresh(warped)
     obs_map = np.absolute(np.float32(threshed)-1)*mask

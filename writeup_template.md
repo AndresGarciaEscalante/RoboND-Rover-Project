@@ -40,10 +40,6 @@ Here is an example of how to include an image in your writeup.
 #### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result.
 
 
-
-
-
-
 ### Autonomous Navigation and Mapping
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
@@ -56,9 +52,9 @@ For this project the data capture of the `perception_step()` goes to the instanc
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
-* Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15.
+* Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15, follow the link to watch the video. ![video](https://www.youtube.com/watch?v=XILRbSKBlKc)
 
-* Rover performance is good enough, it mapped 75-95% of the world with 60-70% fidelity. However, the problem is that the `decision.py` is not completetly develop, the decision making of the rover is too simple and also the velocity of the rover is quite slow.
+* Rover performance is good enough, it mapped 60-75% of the world with 60-70% fidelity. However, the problem is that the `decision.py` is not completetly develop, the decision making of the rover is too simple and also the velocity of the rover is quite slow.
 
 ![Last Frame](RoverSimu.png)
 

@@ -93,7 +93,7 @@ For this project the data capture of the `perception_step()` goes to the instanc
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
 * Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15, follow the link to watch the video.
-[![IMAGE ALT TEXT HERE](https://www.youtube.com/watch?v=XILRbSKBlKc)](https://www.youtube.com/watch?v=XILRbSKBlKc)
+[![video](https://www.youtube.com/watch?v=XILRbSKBlKc)](https://www.youtube.com/watch?v=XILRbSKBlKc)
 
 * Rover performance is good enough, it mapped 60-75% of the world with 60-70% fidelity. However, the problem is that the `decision.py` is not completetly develop, the decision making of the rover is too simple and also the velocity of the rover is quite slow.
 

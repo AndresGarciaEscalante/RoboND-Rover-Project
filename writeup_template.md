@@ -49,7 +49,7 @@ The desire object is displayed with color gray.
 ### Coordinate Transformations
 The next functions were develop to convert the world reference coodinates to rover coordinates, the main reason of that is because all our rover's commands need to be with respect of the rover's position, so that the `decision.py` functions can work.
 
-![Photo](Coordinate Transformations.png)
+![Photo](CA.png)
 
 #### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result.
 
@@ -92,7 +92,9 @@ For this project the data capture of the `perception_step()` goes to the instanc
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
-* Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15, follow the link to watch the video. ![video](https://www.youtube.com/watch?v=XILRbSKBlKc)
+* Screen resolution: 1920x1080; Graphics quality: Good; FPS output to terminal: 13-15, follow the link to watch the video. ![video]()
+<a href="https://www.youtube.com/watch?v=XILRbSKBlKc"
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 * Rover performance is good enough, it mapped 60-75% of the world with 60-70% fidelity. However, the problem is that the `decision.py` is not completetly develop, the decision making of the rover is too simple and also the velocity of the rover is quite slow.
 

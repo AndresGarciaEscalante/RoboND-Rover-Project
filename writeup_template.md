@@ -49,7 +49,7 @@ The desire object is displayed with color gray.
 ### Coordinate Transformations
 The next functions were develop to convert the world reference coodinates to rover coordinates, the main reason of that is because all our rover's commands need to be with respect of the rover's position, so that the `decision.py` functions can work.
 
-![Photo](CoordinateTransformations.png)
+![Photo](Coordinate Transformations.png)
 
 #### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result.
 

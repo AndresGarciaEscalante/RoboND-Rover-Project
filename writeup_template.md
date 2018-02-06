@@ -32,12 +32,52 @@ You're reading it!
 
 ### Notebook Analysis
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
-Here is an example of how to include an image in your writeup.
 
+###Perspective Transform
+The perspective transform uses the opencv2 library, the first method of the library is `getPerpsctiveTransform()`, this function returns the values in a matrix depending of the source and destination points. After that the matrix is used in the following instruction, the 'warpPespective' is going to display a top-down view of the enviroment. Finally the mask only shows the range of the camera.
 
+![Photo 1](PerspectiveTransform.png)
 
+### Color Thresholding
+The `Color Thresholding` is useful to detect different kind of objects, in our simulation it was able to detect not only the navigable path, but also the rock samples.
+The desire object is displayed with color gray.
+
+![Photo 2](ColorThresh1.png)
+
+![Photo 3](ColorThresh2.png)
+
+### Coordinate Transformations
+The next functions were develop to convert the world reference coodinates to the rover coordinates, the main reason of that is because all our rover's commands need to be with repect of the rover's position, so that the `decision.py` functions can work.
+
+![Photo 4](CoordinateTransformations.png)
 
 #### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result.
+
+* The way the `process_image()` was full filled was by using applying all the functions above that we developed in the `Jupyter notebook`, The code is:
+
+    `warped, mask = perspect_transform(img, source, destination)
+    threshed = color_thresh(warped)
+    obs_map = np.absolute(np.float32(threshed) - 1) * mask
+    xpix, ypix = rover_coords(threshed)
+    world_size = data.worldmap.shape[0]
+    scale = 2* dst_size
+    xpos = data.xpos[data.count-1]
+    ypos = data.ypos[data.count-1]
+    yaw = data.yaw[data.count-1]
+    x_world, y_world = pix_to_world(xpix, ypix, xpos, ypos, yaw, world_size, scale)
+    obsxpix, obsypix = rover_coords(obs_map)
+    obs_x_world, obs_y_world = pix_to_world(obsxpix, obsypix, xpos, ypos, yaw, world_size, scale)
+    data.worldmap[y_world, x_world, 2] = 255
+    data.worldmap[obs_y_world, obs_x_world, 0] = 255
+    nav_pix = data.worldmap[:,:,2] > 0
+    data.worldmap[nav_pix, 0] = 0
+    rock_map = find_rocks(warped, levels=(110, 110, 50))
+    if rock_map.any():
+        rock_x, rock_y = rover_coords(rock_map)
+        rock_x_world, rock_y_world = pix_to_world(rock_x, rock_y, xpos, ypos, yaw, world_size, scale)
+        data.worldmap[rock_y_world, rock_x_world, :] = 255`
+
+Basically we evaluate the current images doing `perspect_transform()` and `color_thresh()`, after that we use the some functions to map into the real world, many data was needed to do the mapping (`xpix`,`ypix`,` obs_map`,`obsxpix`,`obsypix`,`world_size`, `scale`, `xpos`, `ypos`, `yaw`). Once we have the values `x_world`, `y_world`, `obs_x_world` and `obs_y_world` we update the `data.worldmap` and represent both of them with colors.
 
 
 ### Autonomous Navigation and Mapping
